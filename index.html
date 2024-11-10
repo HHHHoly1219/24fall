@@ -2,25 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>我的网站导航</title>
+    <title>网站导航</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            margin: 0;
         }
         .sidebar {
             width: 300px;
-            float: left;
             padding: 15px;
             background-color: #f4f4f4;
             border-right: 1px solid #ddd;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
         }
         .content {
             margin-left: 320px;
             padding: 15px;
-        }
-        a {
-            text-decoration: none;
-            color: #0073e6;
+            flex-grow: 1;
         }
         ul {
             list-style-type: none;
@@ -28,85 +29,100 @@
         }
         li {
             margin: 5px 0;
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+            display: inline-block;
+            padding: 3px 0;
+        }
+        .folder {
+            font-weight: bold;
+        }
+        .nested {
+            display: none;
+        }
+        .active {
+            display: block;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var folders = document.getElementsByClassName("folder");
+            for (var i = 0; i < folders.length; i++) {
+                folders[i].addEventListener("click", function() {
+                    this.nextElementSibling.classList.toggle("active");
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="sidebar">
         <h3>文件夹导航</h3>
         <ul>
-            <li>秋招
-                <ul>
-                    <li>0_岗位和业务
-                        <ul>
-                            <li>业务场景
-                                <ul>
-                                    <li><a href="秋招/0_岗位和业务/业务场景/字节跳动_大模型数据策略产品经理.html">字节跳动_大模型数据策略产品经理</a></li>
-                                    <li><a href="秋招/0_岗位和业务/业务场景/岗位分析_大模型数据策略产品经理_ChatGPT.html">岗位分析_大模型数据策略产品经理_ChatGPT</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>1_面试题目
-                        <ul>
-                            <li>相关职位的面经
-                                <ul>
-                                    <li><a href="秋招/1_面试题目/相关职位的面经/AI产品经理_牛客面经.html">AI产品经理_牛客面经</a></li>
-                                    <li><a href="秋招/1_面试题目/相关职位的面经/其他产品经理面试问题.html">其他产品经理面试问题</a></li>
-                                    <li><a href="秋招/1_面试题目/相关职位的面经/字节Data PM 面经.html">字节Data PM 面经</a></li>
-                                    <li><a href="秋招/1_面试题目/相关职位的面经/数据产品经理面试问题_小红书整理.html">数据产品经理面试问题_小红书整理</a></li>
-                                    <li><a href="秋招/1_面试题目/相关职位的面经/飞书AI大模型策略产品经理_字节实习面经.html">飞书AI大模型策略产品经理_字节实习面经</a></li>
-                                </ul>
-                            </li>
-                            <li>简历深挖
-                                <ul>
-                                    <li><a href="秋招/1_面试题目/简历深挖/ChatGPT的面试分析.html">ChatGPT的面试分析</a></li>
-                                    <li><a href="秋招/1_面试题目/简历深挖/HR面试.html">HR面试</a></li>
-                                    <li><a href="秋招/1_面试题目/简历深挖/反问环节.html">反问环节</a></li>
-                                    <li><a href="秋招/1_面试题目/简历深挖/简历深挖.html">简历深挖</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>2_产品相关
-                        <ul>
-                            <li><a href="秋招/2_产品相关/SOP“标准操作程序”.html">SOP“标准操作程序”</a></li>
-                            <li><a href="秋招/2_产品相关/产品管理.html">产品管理</a></li>
-                            <li><a href="秋招/2_产品相关/怎么成为一名产品经理？.html">怎么成为一名产品经理？</a></li>
-                            <li><a href="秋招/2_产品相关/竞品分析.html">竞品分析</a></li>
-                            <li><a href="秋招/2_产品相关/策略经理.html">策略经理</a></li>
-                            <li><a href="秋招/2_产品相关/项目管理的原则.html">项目管理的原则</a></li>
-                        </ul>
-                    </li>
-                    <li>3_Data相关
-                        <ul>
-                            <li>Pandas库_数据清洗
-                                <ul>
-                                    <li><a href="秋招/3_Data相关/Pandas库_数据清洗/CSV文件.html">CSV文件</a></li>
-                                    <li><a href="秋招/3_Data相关/Pandas库_数据清洗/Pandas.html">Pandas</a></li>
-                                </ul>
-                            </li>
-                            <li>SQL案例计算
-                                <ul>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/3小时学会 MySQL.html">3小时学会 MySQL</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/数据库优化_MySQL.html">数据库优化_MySQL</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/案例：用户留存率.html">案例：用户留存率</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/✨数据集：含义、类型、标注方案.html">✨数据集：含义、类型、标注方案</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/数据策略：含义与应用场景.html">数据策略：含义与应用场景</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/看完还想转数据产品经理方向吗？.html">看完还想转数据产品经理方向吗？</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/职位描述中提到的数据概念.html">职位描述中提到的数据概念</a></li>
-                                    <li><a href="秋招/3_Data相关/SQL案例计算/AB测试概述.html">AB测试概述</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+            <li class="folder">秋招</li>
+            <ul class="nested">
+                <li class="folder">0_岗位和业务</li>
+                <ul class="nested">
+                    <li class="folder">业务场景</li>
+                    <ul class="nested">
+                        <li><a href="秋招/0_岗位和业务/业务场景/字节跳动_大模型数据策略产品经理.html" target="content-frame">字节跳动_大模型数据策略产品经理</a></li>
+                        <li><a href="秋招/0_岗位和业务/业务场景/岗位分析_大模型数据策略产品经理_ChatGPT.html" target="content-frame">岗位分析_大模型数据策略产品经理_ChatGPT</a></li>
+                    </ul>
                 </ul>
-            </li>
+                <li class="folder">1_面试题目</li>
+                <ul class="nested">
+                    <li class="folder">相关职位的面经</li>
+                    <ul class="nested">
+                        <li><a href="秋招/1_面试题目/相关职位的面经/AI产品经理_牛客面经.html" target="content-frame">AI产品经理_牛客面经</a></li>
+                        <li><a href="秋招/1_面试题目/相关职位的面经/其他产品经理面试问题.html" target="content-frame">其他产品经理面试问题</a></li>
+                        <li><a href="秋招/1_面试题目/相关职位的面经/字节Data PM 面经.html" target="content-frame">字节Data PM 面经</a></li>
+                        <li><a href="秋招/1_面试题目/相关职位的面经/数据产品经理面试问题_小红书整理.html" target="content-frame">数据产品经理面试问题_小红书整理</a></li>
+                        <li><a href="秋招/1_面试题目/相关职位的面经/飞书AI大模型策略产品经理_字节实习面经.html" target="content-frame">飞书AI大模型策略产品经理_字节实习面经</a></li>
+                    </ul>
+                    <li class="folder">简历深挖</li>
+                    <ul class="nested">
+                        <li><a href="秋招/1_面试题目/简历深挖/ChatGPT的面试分析.html" target="content-frame">ChatGPT的面试分析</a></li>
+                        <li><a href="秋招/1_面试题目/简历深挖/HR面试.html" target="content-frame">HR面试</a></li>
+                        <li><a href="秋招/1_面试题目/简历深挖/反问环节.html" target="content-frame">反问环节</a></li>
+                        <li><a href="秋招/1_面试题目/简历深挖/简历深挖.html" target="content-frame">简历深挖</a></li>
+                    </ul>
+                </ul>
+                <li class="folder">2_产品相关</li>
+                <ul class="nested">
+                    <li><a href="秋招/2_产品相关/SOP“标准操作程序”.html" target="content-frame">SOP“标准操作程序”</a></li>
+                    <li><a href="秋招/2_产品相关/产品管理.html" target="content-frame">产品管理</a></li>
+                    <li><a href="秋招/2_产品相关/怎么成为一名产品经理？.html" target="content-frame">怎么成为一名产品经理？</a></li>
+                    <li><a href="秋招/2_产品相关/竞品分析.html" target="content-frame">竞品分析</a></li>
+                    <li><a href="秋招/2_产品相关/策略经理.html" target="content-frame">策略经理</a></li>
+                    <li><a href="秋招/2_产品相关/项目管理的原则.html" target="content-frame">项目管理的原则</a></li>
+                </ul>
+                <li class="folder">3_Data相关</li>
+                <ul class="nested">
+                    <li class="folder">Pandas库_数据清洗</li>
+                    <ul class="nested">
+                        <li><a href="秋招/3_Data相关/Pandas库_数据清洗/CSV文件.html" target="content-frame">CSV文件</a></li>
+                        <li><a href="秋招/3_Data相关/Pandas库_数据清洗/Pandas.html" target="content-frame">Pandas</a></li>
+                    </ul>
+                    <li class="folder">SQL案例计算</li>
+                    <ul class="nested">
+                        <li><a href="秋招/3_Data相关/SQL案例计算/3小时学会 MySQL.html" target="content-frame">3小时学会 MySQL</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/数据库优化_MySQL.html" target="content-frame">数据库优化_MySQL</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/案例：用户留存率.html" target="content-frame">案例：用户留存率</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/✨数据集：含义、类型、标注方案.html" target="content-frame">✨数据集：含义、类型、标注方案</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/数据策略：含义与应用场景.html" target="content-frame">数据策略：含义与应用场景</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/看完还想转数据产品经理方向吗？.html" target="content-frame">看完还想转数据产品经理方向吗？</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/职位描述中提到的数据概念.html" target="content-frame">职位描述中提到的数据概念</a></li>
+                        <li><a href="秋招/3_Data相关/SQL案例计算/AB测试概述.html" target="content-frame">AB测试概述</a></li>
+                    </ul>
+                </ul>
+            </ul>
         </ul>
     </div>
     <div class="content">
-        <h1>欢迎来到我的网站</h1>
-        <p>点击左侧的链接来访问不同的页面。</p>
+        <iframe name="content-frame" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 </body>
 </html>
